@@ -1,8 +1,10 @@
 import pygame
+import sys
 from constants import * 
 from player import * 
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+
 
 def main():
     pygame.init()
@@ -30,6 +32,13 @@ def main():
         screen.fill("black")
         for obj in updatable:
             obj.update(dt)
+        
+        for obj in asteroids:
+            if player.is_collide(obj) == True:
+                print("Game over!")
+                sys.exit()
+
+
 
         screen.fill("black")
 
